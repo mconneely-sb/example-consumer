@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 
 env:
-  PACT_BROKER_BASE_URL: https://test.pactflow.io
+  PACT_BROKER_BASE_URL: https://mconneely-sb.pactflow.io
   PACT_BROKER_TOKEN: ${{ secrets.PACTFLOW_TOKEN_FOR_CI_CD_WORKSHOP }}
   REACT_APP_API_BASE_URL: http://localhost:3001
   GIT_COMMIT: ${{ github.sha }}
@@ -58,4 +58,4 @@ jobs:
       - run: docker pull pactfoundation/pact-cli:latest
       - name: Deploy
         run: GIT_BRANCH=${GIT_REF:11} make deploy
-        if: github.ref == 'refs/heads/master'
+        if: github.ref == 'refs/heads/mc-example-consumer'
